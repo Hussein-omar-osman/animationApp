@@ -10,11 +10,12 @@
 
 import React from 'react';
 // import Follow from './src/components/Follow';
-import InitialPracAnime from './src/pages/InitialPracAnime';
+// import InitialPracAnime from './src/pages/InitialPracAnime';
+import MovePan from './src/pages/MovePan';
 // import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const App = () => {
-  return <InitialPracAnime />;
+  return <MovePan />;
 };
 
 export default App;
