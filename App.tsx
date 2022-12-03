@@ -9,34 +9,12 @@
  */
 
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+// import Follow from './src/components/Follow';
+import InitialPracAnime from './src/pages/InitialPracAnime';
+// import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const App = () => {
-  return (
-    // <GestureHandlerRootView>
-    <View style={styles.container}>
-      <View style={styles.circle} />
-    </View>
-    // </GestureHandlerRootView>
-  );
+  return <InitialPracAnime />;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // backgroundColor: 'red',
-  },
-  circle: {
-    height: 80,
-    aspectRatio: 1,
-    backgroundColor: 'blue',
-    borderRadius: 40,
-    opacity: 0.8,
-    // marginTop: 500,
-  },
-});
 
 export default App;
