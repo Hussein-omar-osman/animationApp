@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import React from 'react';
 import Animated, {
   useAnimatedGestureHandler,
@@ -11,7 +11,14 @@ import {
   PanGestureHandlerGestureEvent,
 } from 'react-native-gesture-handler';
 
-const SIZE = 100;
+const WINDOWWIDTH = Dimensions.get('screen').width;
+
+const SIZE = WINDOWWIDTH / 4;
+const CIRCLE_RADIUS = WINDOWWIDTH - 10;
+
+// const windowWidth = Dimensions.get('screen').width;
+
+// console.log(windowWidth);
 
 type ContextType = {
   translateX: number;
@@ -34,12 +41,17 @@ const MovePan = () => {
     onActive: (event, context) => {
       translateX.value = event.translationX + context.translateX;
       translateY.value = event.translationY + context.translateY;
-      console.log(translateX.value);
-      console.log(translateY.value);
     },
     onEnd: () => {
-      translateX.value = withSpring(0);
-      translateY.value = withSpring(0);
+      const distance = Math.sqrt(translateX.value ** 2 + translateY.value ** 2);
+
+      console.log('distance = ', distance);
+      console.log('CIRCLE_RADIUS = ', CIRCLE_RADIUS / 2);
+
+      if (distance < CIRCLE_RADIUS / 2 + SIZE / 2) {
+        translateX.value = withSpring(0);
+        translateY.value = withSpring(0);
+      }
     },
   });
 
@@ -58,9 +70,11 @@ const MovePan = () => {
 
   return (
     <View style={styles.container}>
-      <PanGestureHandler onGestureEvent={panGesterEvent}>
-        <Animated.View style={[styles.square, rStyle]} />
-      </PanGestureHandler>
+      <View style={styles.circle}>
+        <PanGestureHandler onGestureEvent={panGesterEvent}>
+          <Animated.View style={[styles.square, rStyle]} />
+        </PanGestureHandler>
+      </View>
     </View>
   );
 };
@@ -78,5 +92,14 @@ const styles = StyleSheet.create({
     width: SIZE,
     backgroundColor: 'rgba(0, 0, 256, 0.5)',
     borderRadius: 20,
+  },
+  circle: {
+    height: CIRCLE_RADIUS,
+    width: CIRCLE_RADIUS,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: CIRCLE_RADIUS / 2,
+    borderWidth: 5,
+    borderColor: 'rgba(0, 0, 256, 0.5)',
   },
 });
