@@ -4,6 +4,7 @@ import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
+  withSpring,
 } from 'react-native-reanimated';
 import {
   PanGestureHandler,
@@ -36,7 +37,10 @@ const MovePan = () => {
       console.log(translateX.value);
       console.log(translateY.value);
     },
-    onEnd: () => {},
+    onEnd: () => {
+      translateX.value = withSpring(0);
+      translateY.value = withSpring(0);
+    },
   });
 
   const rStyle = useAnimatedStyle(() => {
