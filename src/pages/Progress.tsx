@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useCallback} from 'react';
 import {
   StyleSheet,
@@ -37,6 +38,11 @@ export default function Progress() {
   const progressText = useDerivedValue(() => {
     return `${Math.floor(progress.value * 100)}`;
   });
+  const statusText = useDerivedValue(() => {
+    // eslint-disable-next-line curly
+    if (progress.value > 0 && progress.value < 1) return 'Proceding...';
+    return `${progress.value === 1 ? 'Reset' : 'Start'}`;
+  });
 
   const onPress = useCallback(() => {
     progress.value = withTiming(progress.value > 0 ? 0 : 1, {duration: 2000});
@@ -65,7 +71,7 @@ export default function Progress() {
         />
       </Svg>
       <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Text style={styles.buttonText}>Run</Text>
+        <ReText style={styles.buttonText} text={statusText} />
       </TouchableOpacity>
     </View>
   );
