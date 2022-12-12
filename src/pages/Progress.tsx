@@ -27,7 +27,7 @@ const R = CIRCLE_LENGTH / (2 * Math.PI);
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
-export default function App() {
+export default function Progress() {
   const progress = useSharedValue(0);
 
   const animatedProps = useAnimatedProps(() => ({
