@@ -14,29 +14,12 @@ import React from 'react';
 import MovePan from './src/pages/MovePan';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import Progress from './src/pages/Progress';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Button, View} from 'react-native';
-import {Text} from 'react-native-svg';
 import InitialPracAnime from './src/pages/InitialPracAnime';
+import Home from './src/pages/Home';
 
 const Stack = createNativeStackNavigator();
-
-function Home({navigation}) {
-  // const navigation = useNavigation();
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      {/* <Text>Home Screen</Text> */}
-      <Button
-        title="Progress"
-        onPress={() => navigation.navigate('Progress')}
-      />
-      <View style={{marginVertical: 20}} />
-      <Button title="Loader" onPress={() => navigation.navigate('Loader')} />
-      <Button title="Spring" onPress={() => navigation.navigate('Spring')} />
-    </View>
-  );
-}
 
 const App = () => {
   return (
