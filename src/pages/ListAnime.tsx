@@ -1,18 +1,23 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, View, ViewToken} from 'react-native';
 import React from 'react';
+import ListItem from '../components/ListItem';
+import {useSharedValue} from 'react-native-reanimated';
 
 const ListAnime = () => {
   const data = new Array(50).fill(0).map((_, i) => ({
     id: i,
   }));
+  const viewableItems = useSharedValue<ViewToken[]>([]);
   return (
     <View style={styles.container}>
       <FlatList
+        contentContainerStyle={{paddingTop: 40}}
         data={data}
+        onViewableItemsChanged={({viewableItems: vItems}) =>
+          (viewableItems.value = vItems)
+        }
         renderItem={({item}) => (
-          <View key={item.id} style={styles.sList}>
-            <Text style={styles.text}>{item.id}</Text>
-          </View>
+          <ListItem key={item.id} viewableItems={viewableItems} />
         )}
       />
     </View>
