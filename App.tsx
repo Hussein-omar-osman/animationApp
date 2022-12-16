@@ -18,6 +18,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import InitialPracAnime from './src/pages/InitialPracAnime';
 import Home from './src/pages/Home';
+import ListAnime from './src/pages/ListAnime';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,7 @@ const App = () => {
           <Stack.Screen name="Progress" component={Progress} />
           <Stack.Screen name="Loader" component={InitialPracAnime} />
           <Stack.Screen name="Spring" component={MovePan} />
+          <Stack.Screen name="ListAnime" component={ListAnime} />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

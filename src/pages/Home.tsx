@@ -4,18 +4,10 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const {width} = Dimensions.get('window');
-const links = ['Progress', 'Loader', 'Spring'];
+const links = ['Progress', 'Loader', 'Spring', 'ListAnime'];
 
 const Home = ({navigation}) => {
   return (
-    // <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-    //   <Button
-    //     title="Progress"
-    //     onPress={() => navigation.navigate('Progress')}
-    //   />
-    //   <View style={{marginVertical: 20}} />
-    //   <Button title="Loader" onPress={() => navigation.navigate('Loader')} />
-    //   <Button title="Spring" onPress={() => navigation.navigate('Spring')} />
     <SafeAreaView
       style={{
         flex: 1,
@@ -48,7 +40,6 @@ const Home = ({navigation}) => {
         </TouchableOpacity>
       ))}
     </SafeAreaView>
-    // </View>
   );
 };
 
