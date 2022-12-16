@@ -17,7 +17,7 @@ const ListAnime = () => {
           (viewableItems.value = vItems)
         }
         renderItem={({item}) => (
-          <ListItem key={item.id} viewableItems={viewableItems} />
+          <ListItem key={item.id} item={item} viewableItems={viewableItems} />
         )}
       />
     </View>

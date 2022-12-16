@@ -1,13 +1,36 @@
-import {StyleSheet, View, ViewToken} from 'react-native';
+import {StyleSheet, ViewToken} from 'react-native';
 import React, {memo} from 'react';
-import Animated from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+} from 'react-native-reanimated';
 
 type ListItemProps = {
   viewableItems: Animated.SharedValue<ViewToken[]>;
+  item: {
+    id: number;
+  };
 };
 
-const ListItem: React.FC<ListItemProps> = memo(() => {
-  return <View style={styles.sList} />;
+const ListItem: React.FC<ListItemProps> = memo(({viewableItems, item}) => {
+  const rStyle = useAnimatedStyle(() => {
+    const isVisible = Boolean(
+      viewableItems.value
+        .filter(sItem => sItem.isViewable)
+        .find(viewableItem => viewableItem.item.id === item.id),
+    );
+    return {
+      opacity: withTiming(isVisible ? 1 : 0),
+      transform: [
+        {
+          scale: withSpring(isVisible ? 1 : 0.5),
+        },
+      ],
+    };
+  }, []);
+
+  return <Animated.View style={[styles.sList, rStyle]} />;
 });
 
 export default ListItem;
