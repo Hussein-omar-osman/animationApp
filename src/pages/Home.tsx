@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {Button, Dimensions, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -13,7 +13,6 @@ const Home = ({navigation}) => {
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        // backgroundColor: 'grey',
       }}>
       {links.map((item, i) => (
         <TouchableOpacity

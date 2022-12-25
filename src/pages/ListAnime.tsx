@@ -1,7 +1,8 @@
-import {FlatList, StyleSheet, View, ViewToken} from 'react-native';
+import {FlatList, StyleSheet, ViewToken} from 'react-native';
 import React from 'react';
 import ListItem from '../components/ListItem';
 import {useSharedValue} from 'react-native-reanimated';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const ListAnime = () => {
   const data = new Array(50).fill(0).map((_, i) => ({
@@ -9,9 +10,8 @@ const ListAnime = () => {
   }));
   const viewableItems = useSharedValue<ViewToken[]>([]);
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <FlatList
-        contentContainerStyle={{paddingTop: 40}}
         data={data}
         onViewableItemsChanged={({viewableItems: vItems}) =>
           (viewableItems.value = vItems)
@@ -20,7 +20,7 @@ const ListAnime = () => {
           <ListItem key={item.id} item={item} viewableItems={viewableItems} />
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -29,8 +29,6 @@ export default ListAnime;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     backgroundColor: '#fff',
   },
   sList: {

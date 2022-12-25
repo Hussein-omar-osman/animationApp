@@ -1,12 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useCallback} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, View, Dimensions, TouchableOpacity} from 'react-native';
 import Animated, {
   useSharedValue,
   withTiming,

@@ -16,10 +16,6 @@ const WINDOWWIDTH = Dimensions.get('screen').width;
 const SIZE = WINDOWWIDTH / 4;
 const CIRCLE_RADIUS = WINDOWWIDTH - 10;
 
-// const windowWidth = Dimensions.get('screen').width;
-
-// console.log(windowWidth);
-
 type ContextType = {
   translateX: number;
   translateY: number;
