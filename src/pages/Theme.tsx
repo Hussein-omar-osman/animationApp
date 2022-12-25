@@ -7,6 +7,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
+const SIZE = Dimensions.get('window').width * 0.7;
+
 const Colors = {
   dark: {
     background: '#1e1e1e',
@@ -42,6 +44,7 @@ const Theme = () => {
     );
     return {backgroundColor};
   });
+
   const rCircleStyle = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
       progress.value,
@@ -50,6 +53,7 @@ const Theme = () => {
     );
     return {backgroundColor};
   });
+
   const rTextStyle = useAnimatedStyle(() => {
     const color = interpolateColor(
       progress.value,
@@ -78,8 +82,6 @@ const Theme = () => {
     </Animated.View>
   );
 };
-
-const SIZE = Dimensions.get('window').width * 0.7;
 
 const styles = StyleSheet.create({
   container: {
