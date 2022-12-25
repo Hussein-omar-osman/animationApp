@@ -4,7 +4,7 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const {width} = Dimensions.get('window');
-const links = ['Progress', 'Loader', 'Spring', 'ListAnime'];
+const links = ['Progress', 'Loader', 'Spring', 'ListAnime', 'Theme'];
 
 const Home = ({navigation}) => {
   return (
