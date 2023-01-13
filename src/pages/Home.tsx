@@ -1,12 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Dimensions, Text, TouchableOpacity} from 'react-native';
+import {NavigationProp, ParamListBase} from '@react-navigation/native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 const {width} = Dimensions.get('window');
 const links = ['Progress', 'Loader', 'Spring', 'ListAnime', 'Theme'];
 
-const Home = ({navigation}) => {
+type Props = {
+  navigation: NavigationProp<ParamListBase>;
+};
+
+const Home = ({navigation}: Props) => {
   return (
     <SafeAreaView
       style={{
