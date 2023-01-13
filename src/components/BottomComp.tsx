@@ -16,11 +16,23 @@ const BottomComp = () => {
   const translateY = useSharedValue(0);
   const context = useSharedValue({y: 0});
 
+  const scroolTo = (destination: number) => {
+    'worklet';
+    translateY.value = withSpring(destination, {damping: 50});
+  };
+
   const gesture = Gesture.Pan()
     .onStart(() => (context.value = {y: translateY.value}))
     .onUpdate(event => {
       translateY.value = event.translationY + context.value.y;
       translateY.value = Math.max(translateY.value, MAX_TRANSLATE_Y);
+    })
+    .onEnd(() => {
+      if (translateY.value > -SCREEN_HEIGHT / 3) {
+        scroolTo(0);
+      } else if (translateY.value < -SCREEN_HEIGHT / 2) {
+        scroolTo(MAX_TRANSLATE_Y);
+      }
     });
 
   const rMain = useAnimatedStyle(() => {
