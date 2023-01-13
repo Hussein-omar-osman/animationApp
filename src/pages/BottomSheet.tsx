@@ -1,10 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
+import BottomComp from '../components/BottomComp';
 
 const BottomSheet = () => {
   return (
     <View style={styles.container}>
-      <Text>BottomSheet</Text>
+      {/* <Text>BottomSheet</Text> */}
+      <StatusBar barStyle="light-content" />
+      <BottomComp />
     </View>
   );
 };
@@ -16,6 +19,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#111',
   },
 });
