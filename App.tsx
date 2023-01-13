@@ -9,6 +9,7 @@ import InitialPracAnime from './src/pages/InitialPracAnime';
 import Home from './src/pages/Home';
 import ListAnime from './src/pages/ListAnime';
 import Theme from './src/pages/Theme';
+import BottomSheet from './src/pages/BottomSheet';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ const App = () => {
           <Stack.Screen name="Spring" component={MovePan} />
           <Stack.Screen name="ListAnime" component={ListAnime} />
           <Stack.Screen name="Theme" component={Theme} />
+          <Stack.Screen name="BottomSheet" component={BottomSheet} />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
