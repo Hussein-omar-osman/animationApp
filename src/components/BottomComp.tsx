@@ -1,13 +1,16 @@
 import {Dimensions, StyleSheet, View} from 'react-native';
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Animated, {
+  Extrapolate,
+  interpolate,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get('window');
+const MAX_TRANSLATE_Y = -SCREEN_HEIGHT + 50;
 
 const BottomComp = () => {
   const translateY = useSharedValue(0);
@@ -17,11 +20,18 @@ const BottomComp = () => {
     .onStart(() => (context.value = {y: translateY.value}))
     .onUpdate(event => {
       translateY.value = event.translationY + context.value.y;
-      translateY.value = Math.max(translateY.value, -SCREEN_HEIGHT);
+      translateY.value = Math.max(translateY.value, MAX_TRANSLATE_Y);
     });
 
   const rMain = useAnimatedStyle(() => {
+    const borderRadius = interpolate(
+      translateY.value,
+      [MAX_TRANSLATE_Y + 50, MAX_TRANSLATE_Y],
+      [25, 5],
+      Extrapolate.CLAMP,
+    );
     return {
+      borderRadius,
       transform: [{translateY: translateY.value}],
     };
   });
